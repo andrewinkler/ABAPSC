@@ -1,4 +1,4 @@
-ABAPSC
+ABAP Source Codes Repository
 ======
 
-ABAP Source Codes
+Repository for my codes written on ABAP/4.
