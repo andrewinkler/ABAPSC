@@ -1,0 +1,40 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Form:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+REPORT  zscreen_status_exclude_example.
+
+DATA: ti_ucomm TYPE TABLE OF sy-ucomm.
+
+PARAMETERS: carrid TYPE sflight-carrid.
+
+AT SELECTION-SCREEN OUTPUT.
+  APPEND: 'NAMEOFBUTTON1' TO ti_ucomm,
+	  'NAMEOFBUTTON2' TO ti_ucomm.
+  
+  CALL FUNCTION 'RS_SET_SELSCREEN_STATUS'
+    EXPORTING
+      p_status  = sy-pfkey
+    TABLES
+      p_exclude = ti_ucomm.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Module Pool:
+Comment: Add it into PAI user command
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+DATA: ti_ucomm TYPE TABLE OF sy-ucomm.
+
+CASE sy-ucomm (Or name of this field on your screen parameters)
+ WHEN 'NAMEOFBUTTON1' OR 'NAMEOFBUTTON2'
+  APPEND: 'NAMEOFBUTTON1' TO ti_ucomm,
+	  'NAMEOFBUTTON2' TO ti_ucomm.
+
+  CALL FUNCTION 'RS_SET_SELSCREEN_STATUS'
+    EXPORTING
+      p_status  = sy-pfkey
+    TABLES
+      p_exclude = ti_ucomm.
+
+ENDCASE.
