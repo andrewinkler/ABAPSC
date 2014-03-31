@@ -38,3 +38,4 @@ CASE sy-ucomm (Or name of this field on your screen parameters)
       p_exclude = ti_ucomm.
 
 ENDCASE.
+//Pacheco, to zuando teu código =p
